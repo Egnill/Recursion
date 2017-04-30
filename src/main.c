@@ -4,38 +4,67 @@
 
 int main()
 {
-	int n = 6;
+	int u;
+	printf("Выберите номер задания\n");
+	printf("Задание №1\n");
+	printf("Задание №2\n");
+	printf("Задание №3\n");
+	printf("Введите: ");
+	scanf("%d", &u);
 
-	/*printf("Введите номер члена Фибоначчи: ");
-	scanf("%d", &n);*/
+	switch (u)
+	{
+		case 1:
+		{
+			int l;
+			printf("Введите размер массива: ");
+			scanf("%d", &l);
 
-	printf("Фибоначчи(рекурсия): %d\n", fib_rec(n));
-	printf("Фибоначчи(итерация): %d\n", fib_it_h(1, 1, n));
-	printf("\n");
+			int m[l];
+			printf("Введите элементы массива: ");
+			for (int w = 0; w < l; ++w) {
+				scanf("%d", &m[w]);
+			}
+			printf("\n");
+			printf("Сумма массива(рекурсия): %d\n", sum_array_rec(l - 1, m));
+			printf("Сумма массива(итерация): %d\n", sum_array_it(0, l - 1, m));
+		}
+		break;
+		case 2:
+		{
+			int n;
+			printf("Введите номер числа: ");
+			scanf("%d", &n);
 
-	int m[] = {1, 5, -8, 6, -9, 10, 11, 12, 100};
-	int l = sizeof(m) / sizeof(int);
+			printf("%d-ое число Фибоначчи(рекурсия): %d\n", n, fib_rec(n));
+			printf("%d-ое число Фибоначчи(итерация): %d\n", n, fib_it_h(1, 1, n));
+		}
+		break;
+		case 3:
+		{
+			int number;
 
-	printf("Сумма массива(рекурсия): %d\n", sum_array_rec(l - 1, m));
-	printf("Сумма массива(итерация): %d\n", sum_array_it(0, l - 1, m));
-	printf("\n");
+			printf("Введите число: ");
+			scanf("%d", &number);
 
-	int number = 159357;
-	int i = 0, number_2 = number;
+			int i = 0, number_2 = number;
 
-	while (number_2 != 0) {
-		++i;
-		number_2 = number_2 / 10;
+			while (number_2 != 0) {
+				++i;
+				number_2 = number_2 / 10;
+			}
+
+			char *q = malloc(i * sizeof(char));
+			int y = n_s(q, number, i - 1);
+
+			if (y == 0) {
+				printf("Строка: %s\n", q);
+			}
+
+			free(q);
+		}
+		break;
 	}
-
-	char *q = malloc(i * sizeof(char));
-	int y = n_s(q, number, i - 1);
-
-	if (y == 0) {
-		printf("Перевод числа в строку: %s\n", q);
-	}
-
-	free(q);
 
 	return 0;
 }
